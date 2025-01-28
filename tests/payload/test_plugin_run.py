@@ -64,7 +64,9 @@ class TestPayloadRun:
             refer=refer,
             plugin=_plugin,
             restrictions=restrictions,
-            web_driver=driver
+            web_driver=driver,
+            url='https://developer.swift.com/apis',
+            timeout=20,
         )
         return _payload.content()
 
@@ -84,7 +86,6 @@ class TestPayloadRun:
         """
         max_docs = 4
         docs = self.run_payload(fix_payload, fix_s3pRefer, fix_s3pPlugin, S3PPluginRestrictions(max_docs, None, None, None), chrome_driver)
-
         # 1. Количество материалов должно быть не меньше параметра максимального числа материалов.
         assert len(docs) == max_docs, f"Payload вернул {len(docs)} материалов. А должен был {max_docs}"
 
